@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-@Order(3)
+@Order(2)
 public class ExceptionHandlingAspect {
-    @Before("aop.aspects.MyPointcuts.allGetMethods()")
-    public void beforeGetExceptionHandlingAdvice(){
-        System.out.println("beforeGetExceptionHandlingAdvice: ловим/выкидываем " +
+    @Before("aop.aspects.MyPointcuts.allAddMethods()")
+    public void beforeAddExceptionHandlingAdvice(){
+        System.out.println("beforeAddExceptionHandlingAdvice: ловим/выкидываем " +
                 "исключение при попытке получить книгу журнал");
+        System.out.println("--------------------------------");
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-@Order(2)
+@Order(3)
 public class SecurityAspect {
 
 //    @Pointcut("execution(* aop.UniLibrary.*(..))")
@@ -54,9 +54,10 @@ public class SecurityAspect {
 
 
 
-    @Before("aop.aspects.MyPointcuts.allGetMethods()")
-    public void beforeGetSecurityAdvice(){
-        System.out.println("beforeGetSecurityAdvice: проверка прав " +
+    @Before("aop.aspects.MyPointcuts.allAddMethods()")
+    public void beforeAddSecurityAdvice(){
+        System.out.println("beforeAddSecurityAdvice: проверка прав " +
                 "на получение книги/журнала");
+        System.out.println("--------------------------------");
     }
 }
