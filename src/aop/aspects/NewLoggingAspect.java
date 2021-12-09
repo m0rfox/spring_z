@@ -15,7 +15,14 @@ public class NewLoggingAspect {
         System.out.println("aroundReturnBookLoggingAdvice: " +
                 "в библиотеку пытаются вернуть книгу");
         long begin = System.currentTimeMillis();
-        Object targetMethodResult = proceedingJoinPoint.proceed();
+        Object targetMethodResult = null;
+        try {
+            targetMethodResult = proceedingJoinPoint.proceed();
+        } catch (Exception e){
+            System.out.println("Было поймано исключение " + e);
+            throw e;
+        }
+
         long end = System.currentTimeMillis();
         System.out.println("aroundReturnBookLoggingAdvice: " +
                 "в библиотеку успешно вернули книгу");
