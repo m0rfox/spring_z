@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-public class Test1 {
+public class Test5 {
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration()
@@ -16,11 +16,17 @@ public class Test1 {
 
         try {
             Session session = factory.getCurrentSession();
-            Employee emp = new Employee("Aleksand", "Smirnov", "SALE", 550);
-
             session.beginTransaction();
-            session.save(emp);
+
+//            Employee employee = session.get(Employee.class, 7);
+//            session.delete(employee);
+
+            session.createQuery("delete Employee " +
+                    "where name = 'Aleksand'").executeUpdate();
+
+
             session.getTransaction().commit();
+            System.out.println("Done!");
         }
         finally {
             factory.close();
