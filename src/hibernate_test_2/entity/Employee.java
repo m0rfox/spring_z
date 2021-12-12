@@ -1,6 +1,4 @@
-package hibernate_test.entity;
-
-import hibernate_test_2.entity.Detail;
+package hibernate_test_2.entity;
 
 import javax.persistence.*;
 
@@ -24,10 +22,6 @@ public class Employee {
 
     @Column(name = "salary")
     private int salary;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "details_id")
-    private Detail empDetail;
 
     public Employee() {
     }

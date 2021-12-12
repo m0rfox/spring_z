@@ -1,14 +1,13 @@
-package hibernate_test;
+package hibernate_test_2;
+
 
 import hibernate_test.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.List;
 
-
-public class Test3 {
+public class Test1 {
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration()
@@ -18,20 +17,11 @@ public class Test3 {
 
         try {
             Session session = factory.getCurrentSession();
+            Employee emp = new Employee("Aleksand", "Smirnov", "SALE", 550);
+
             session.beginTransaction();
-
-//            List<Employee> emps = session.createQuery("from Employee ")
-//                    .getResultList();
-
-            List<Employee> emps = session.createQuery("from Employee " +
-                    "where name = 'Aleksand' and salary>500")
-                    .getResultList();
-
-            for (Employee e: emps)
-                System.out.println(e);
-
+            session.save(emp);
             session.getTransaction().commit();
-            System.out.println("Done!");
         }
         finally {
             factory.close();
