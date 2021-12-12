@@ -33,6 +33,10 @@ public class Employee {
         this.salary = salary;
     }
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "details_id")
+    private Detail empDetail;
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -82,5 +86,13 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public Detail getEmpDetail() {
+        return empDetail;
+    }
+
+    public void setEmpDetail(Detail empDetail) {
+        this.empDetail = empDetail;
     }
 }
