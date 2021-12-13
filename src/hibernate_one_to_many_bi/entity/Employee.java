@@ -1,4 +1,4 @@
-package hibernate_one_to_many.entity;
+package hibernate_one_to_many_bi.entity;
 
 
 
@@ -22,8 +22,7 @@ public class Employee {
     @Column(name = "salary")
     private int salary;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH,
-            CascadeType.MERGE, CascadeType.DETACH})
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "department_id")
     private Department department;
 
